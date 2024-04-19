@@ -9,18 +9,24 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 def caesar(in_text, in_shift, in_direction):
     var_text = ""
 
+    # Check if the direction is either 'encode' or 'decode'
     if direction == "encode" or direction == "decode":
 
         if direction == "decode":
+
+            # If decoding, invert the shift to go backwards in the alphabet
             in_shift *= -1
 
+        # Loop through each character in the input text
         for i in in_text:
             position_letter = alphabet.index(i)
+            # Shift the position by the given shift value
             shifted_letter = position_letter + in_shift
-            # Gestion des cas exceptionnels #
-            if shifted_letter > 26:  # cas exceptionnel dépassement alphabet positif
+            # Handle wrap around if the shifted position exceeds the alphabet length
+            if shifted_letter > 26:  
                 shifted_letter -= len(alphabet)
-
+                
+            # Add the shifted character to the result string
             var_text += alphabet[shifted_letter]
     else:
         print("Error please enter a valid command: 'encode' or 'decode'")
