@@ -39,7 +39,8 @@ def caesar(in_text, in_shift, in_direction):
         print(f"The {in_direction}d text is: '{var_text}'")
 
     else:
-        print("Error please enter a valid command: 'encode' or 'decode'")
+        # If direction is neither 'encode' nor 'decode', prompt the user to enter the correct direction
+        print("Error, please enter a valid command: 'encode' or 'decode'")
 
 
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
