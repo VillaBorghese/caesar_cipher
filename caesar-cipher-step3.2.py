@@ -18,20 +18,28 @@ def caesar(in_text, in_shift, in_direction):
             in_shift *= -1
 
         # Loop through each character in the input text
-        for i in in_text:
-            position_letter = alphabet.index(i)
-            # Shift the position by the given shift value
-            shifted_letter = position_letter + in_shift
-            # Handle wrap around if the shifted position exceeds the alphabet length
-            if shifted_letter > 26:  
-                shifted_letter -= len(alphabet)
-                
-            # Add the shifted character to the result string
-            var_text += alphabet[shifted_letter]
+        for char in in_text:
+
+            # Check if the character is alphabetic
+            if char in alphabet:
+                position_letter = alphabet.index(char)
+                # Shift the position by the given shift value
+                shifted_letter = position_letter + in_shift
+                # Handle wrap around if the shifted position exceeds the alphabet length
+                if shifted_letter > 26:
+                    shifted_letter -= len(alphabet)
+
+                # Add the shifted character to the result string
+                var_text += alphabet[shifted_letter]
+            else:
+                # If the character is not alphabetic, keep it unchanged
+                var_text += char
+
+        # Print the result
+        print(f"The {in_direction}d text is: '{var_text}'")
+
     else:
         print("Error please enter a valid command: 'encode' or 'decode'")
-
-    print(f"The {in_direction}d text is {var_text}")
 
 
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
